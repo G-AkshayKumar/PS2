@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Certification Search</title>
+</head>
+<body>
+    <h1>Export Certification Search</h1>
+    <form action="/search" method="POST">
+        <label for="export_country">Export Country:</label>
+        <input type="text" id="export_country" name="export_country" required><br><br>
+
+        <label for="product_category">Product Category:</label>
+        <input type="text" id="product_category" name="product_category" required><br><br>
+
+        <label for="hs_code">HS Code:</label>
+        <input type="text" id="hs_code" name="hs_code" required><br><br>
+
+        <label for="first_time_export">Are you exporting for the first time? (Yes/No):</label>
+        <input type="text" id="first_time_export" name="first_time_export" required><br><br>
+
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
