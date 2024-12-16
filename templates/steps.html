@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Preparation Steps</title>
+</head>
+<body>
+    <h1>Document Preparation Steps</h1>
+    <h2>{{ certificate_name }}</h2>
+    <ul>
+        {% for step in steps %}
+        <li>{{ step[1] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back to Home</a>
+</body>
+</html>
