@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExportsMadeEasy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="home.html" id="navbar__logo">ExportsMadeEasy</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="home.html" class="navbar__links"> Home </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__links"> About </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="validation.html" class="navbar__links"> Validation</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="AI_search.html" class="button">AI Search</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <form>
+        <select id="category" class="form-select shadow-sm w-25 ms-5 mt-5">
+            <option value="0">Select Category</option>
+            <option value="1">Certification Name</option>
+            <option value="2">Product Category</option>
+            <option value="3">Issuring Authority</option>
+            <option value="4">HS Code</option>
+            <option value="5">Validity</option>
+        </select>
+        <input type="text" id="searchbar" class="form-control shadow-sm w-25 ms-5 mt-5" placeholder="Search here">
+    </form>
+    <table id="tbl1" class="table table-dark table-hover table-bordered w-50 ms-5 mt-5 table-responsive">
+        <thead>
+            <tr>
+                <th>Certification Name</th>
+                <th>Product Category</th>
+                <th>Issuing Authority</th>
+                <th>HS Code</th>
+                <th>Validity</th>
+            </tr>
+        </thead>
+        <tbody id="tbody1">
+            <tr>
+                <td>CE Marking</td>
+                <td>Electronics & Machinery</td>
+                <td>European Union</td>
+                <td>80000000</td>
+                <td>5 years</td>
+            </tr>
+            <tr>
+                <td>FDA Registration</td>
+                <td>Food & Beverages</td>
+                <td>US Food & Drug Administration</td>
+                <td>50000000</td>
+                <td>Annual renewal</td>
+            </tr>
+            <tr>
+                <td>GOST-R Certificate</td>
+                <td>Industrial Products</td>
+                <td>Russian Federation</td>
+                <td>89800000</td>
+                <td>3 years</td>
+            </tr>
+            <tr>
+                <td>Halal Certification</td>
+                <td>Food & Consumer Goods</td>
+                <td>Islamic Food Council</td>
+                <td>23190000</td>
+                <td>2 years</td>
+            </tr>
+            <tr>
+                <td>ISO 9001</td>
+                <td>All Categories</td>
+                <td>International Organization for Standardization</td>
+                <td>88812345</td>
+                <td>3 years</td>
+            </tr>
+            <tr>
+                <td>BIS Certification</td>
+                <td>Electronics & Consumer Goods</td>
+                <td>Bureau of Indian Standards</td>
+                <td>67676767</td>
+                <td>2 years</td>
+            </tr>
+            <tr>
+                <td>REACH Registration</td>
+                <td>Chemicals & Materials</td>
+                <td>European Chemicals Agency</td>
+                <td>11223344</td>
+                <td>Permanent</td>
+            </tr>
+            <tr>
+                <td>JAS Certification</td>
+                <td>Agricultural Products</td>
+                <td>Japanese Agricultural Standards</td>
+                <td>90919293</td>
+                <td>1 year</td>
+            </tr>
+            <tr>
+                <td>CCC Mark</td>
+                <td>Industrial & Consumer Products</td>
+                <td>China Quality Certification Centre</td>
+                <td>78112233</td>
+                <td>5 years</td>
+            </tr>
+            <tr>
+                <td>ASTM Compliance</td>
+                <td>Materials & Products</td>
+                <td>American Society for Testing and Materials</td>
+                <td>11452367</td>
+                <td>No expiry</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <script>
+        var searchbar = document.getElementById("searchbar");
+        var category = document.getElementById("category");
+        var tbody1 = document.getElementById("tbody1");
+        var original_table_data = tbody1.innerHTML;
+
+        function Search() {
+            tbody1.innerHTML = original_table_data;
+            let rows = tbody1.children;
+
+            if (searchbar.value.length < 1 || category.value == 0) {
+                return;
+            }
+            let filtered_rows = '0';
+            let cat_num = Number(category.value) - 1;
+            let search_text = searchbar.value.toLowerCase();
+            for (let i = 0; i < rows.length; i++) {
+                const currentrowtext = rows[i].children[cat_num].textContent.toLowerCase();
+
+                if (currentrowtext.indexOf(search_text) > -1) {
+                    filtered_rows += rows[i].outerHTML;
+                }
+
+            }
+            tbody1.innerHTML = filtered_rows;
+        }
+        searchbar.addEventListener('input', Search);
+
+        document.getElementById('searchbar').addEventListener('keyup', function () {
+            const searchValue = this.value.toLowerCase();
+            const category = document.getElementById('category').value;
+            const tbody = document.getElementById('tbody1');
+            const rows = tbody.getElementsByTagName('tr');
+            let found = false;
+
+            for (let row of rows) {
+                const cell = row.getElementsByTagName('td')[category - 1];
+                if (cell) {
+                    const text = cell.textContent.toLowerCase();
+                    if (text.includes(searchValue)) {
+                        row.style.display = '';
+                        found = true;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            }
+
+            // Remove existing no-data row if it exists
+            const existingNoData = tbody.querySelector('.no-data-row');
+            if (existingNoData) {
+                tbody.removeChild(existingNoData);
+            }
+
+            // Add no-data row if no matches found
+            if (!found && searchValue) {
+                const noDataRow = document.createElement('tr');
+                noDataRow.className = 'no-data-row';
+                noDataRow.innerHTML = `
+                        <td colspan="5" class="no-data">No matching records found</td>
+                    `;
+                tbody.appendChild(noDataRow);
+            }
+        });
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.navbar__menu');
+
+        menu.addEventListener('click', function () {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

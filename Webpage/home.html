@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExportsMadeEasy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="home.html" id="navbar__logo">ExportsMadeEasy</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="home.html" class="navbar__links"> Home </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__links"> About </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="validation.html" class="navbar__links"> Validation</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="AI_search.html" class="button">AI Search</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Verification</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <div class="container">
+    <input type="file" id="documentInput" accept="application/json" />
+    <button id="verifyButton">Verify Document</button>
+    <div id="result"></div>
+  </div>
+
+  <!-- Import the bundled script containing the @trustvc/trustvc logic -->
+  <script type="module" src="dist/bundle.js"></script>
+
+  <!-- Link to external JS file where the verification logic is defined -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+</body>
+
+</html>

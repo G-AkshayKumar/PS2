@@ -1,0 +1,16 @@
+{
+  "name": "document-verification",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild bundle.js --bundle --platform=browser --format=esm --outfile=dist/bundle.js"
+  },
+  "dependencies": {
+    "@trustvc/trustvc": "^1.0.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

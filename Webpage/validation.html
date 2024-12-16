@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExportsMadeEasy</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="node_modules/@trustvc/trustvc/dist/index.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="home.html" id="navbar__logo">ExportsMadeEasy</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="home.html" class="navbar__links"> Home </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__links"> About </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="validation.html" class="navbar__links"> Validation</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="AI_search.html" class="button">AI Search</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <input type="file" id="documentInput" accept="application/json" />
+        <button id="verifyButton">Verify Document</button>
+        <div id="result"></div>
+    </div>
+    <script type="module">
+        // Debug what's available
+        console.log("Available exports:", {
+            index: window.index,
+            verify: typeof window.verify,
+            available: Object.keys(window)
+        });
+    </script>
+    <script type="module" src="dist/bundle.js"></script>
+
+
+</body>
+
+</html>
