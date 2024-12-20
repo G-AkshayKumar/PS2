@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certification Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2, h3 {
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            margin: 10px auto;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .doc-title, .hs-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .doc-agency, .hs-detail {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .policy-step {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+
+    <h2>First-Time Export Documents</h2>
+    {% if first_time_docs and first_time_docs|length > 0 %}
+    <div>
+        {% for doc in first_time_docs %}
+        <div class="card">
+            <div class="doc-title">📄 {{ doc[0] }}</div>
+            <div class="doc-agency">🏢 Issuing Agency: {{ doc[1] }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No first-time export documents found.</p>
+    {% endif %}
+
+    <h2>General Export Documents</h2>
+    {% if general_docs and general_docs|length > 0 %}
+    <div>
+        {% for doc in general_docs %}
+        <div class="card">
+            <div class="doc-title">📄 {{ doc[0] }}</div>
+            <div class="doc-agency">🏢 Issuing Agency: {{ doc[1] }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No general export documents found.</p>
+    {% endif %}
+
+    <h2>HS Code Data</h2>
+    {% if hs_code_details and hs_code_details|length > 0 %}
+    <div>
+        {% for data in hs_code_details %}
+        <div class="card">
+            <div class="hs-title">📦 HS Code: {{ data[0] }}</div>
+            <ul>
+                <li class="hs-detail">📋 Description: {{ data[1] }}</li>
+                <li class="hs-detail">📑 Export Policy: {{ data[2] }}</li>
+                <li class="hs-detail">⚖️ Policy Condition: {{ data[3] }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No data found for the provided HS Code.</p>
+    {% endif %}
+
+    <h2>Product Category-Specific Export Policy Conditions</h2>
+    {% if policy_conditions and policy_conditions|length > 0 %}
+    <div>
+        {% for condition in policy_conditions %}
+        <div class="card">
+            <div class="policy-step">
+                <span>📌 Step {{ condition[0] }}:</span> {{ condition[1] }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No specific export policy conditions found for the provided product category.</p>
+    {% endif %}
+
+    <h3>Get More Details</h3>
+    <form action="/details" method="POST">
+        <label for="certificate_name">Enter Certification Name:</label>
+        <input type="text" id="certificate_name" name="certificate_name" required>
+        <button type="submit">Get Details</button>
+    </form>
+
+    <a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Certifications & Documents Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background: white;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 5px;
+            color: #555;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Export Certifications & Documents Search</h1>
+    <form action="/search" method="POST">
+        <label for="export_country">Export Country:</label>
+        <input type="text" id="export_country" name="export_country" required>
+
+        <label for="product_category">Product Category:</label>
+        <select id="product_category" name="product_category" required>
+            <option value="" disabled selected>Select Product Category</option>
+            <option value="Live Animals">Live Animals</option>
+            <option value="Meat And Edible Meat Offal">Meat And Edible Meat Offal</option>
+            <option value="Fish And Crustaceans">Fish And Crustaceans</option>
+            <option value="Dairy Produce">Dairy Produce</option>
+            <option value="Products Of Animal Origin">Products Of Animal Origin</option>
+            <option value="Live Trees And Other Plants">Live Trees And Other Plants</option>
+            <option value="Edible Vegetables">Edible Vegetables</option>
+            <option value="Edible Fruit And Nuts">Edible Fruit And Nuts</option>
+            <option value="Coffee, Tea, Maté And Spices">Coffee, Tea, Maté And Spices</option>
+            <option value="Cereals">Cereals</option>
+            <option value="Products Of The Milling Industry">Products Of The Milling Industry</option>
+            <option value="Oil Seeds And Oleaginous Fruits">Oil Seeds And Oleaginous Fruits</option>
+            <option value="Lac; Gums, Resins">Lac; Gums, Resins</option>
+            <option value="Vegetable Plaiting Materials">Vegetable Plaiting Materials</option>
+            <option value="Fertilizers">Fertilizers</option>
+        </select>
+
+        <label for="hs_code">HS Code:</label>
+        <select id="hs_code" name="hs_code" required>
+            <option value="" disabled selected>Select HS Code</option>
+            <option value="1209">1209</option>
+            <option value="12091000">12091000</option>
+            <option value="12092100">12092100</option>
+            <option value="12092200">12092200</option>
+            <option value="12092300">12092300</option>
+            <option value="12092400">12092400</option>
+            <option value="12092500">12092500</option>
+            <option value="120929">120929</option>
+            <option value="12092910">12092910</option>
+            <option value="12092990">12092990</option>
+            <option value="12093000">12093000</option>
+            <option value="120991">120991</option>
+            <option value="12099110">12099110</option>
+            <option value="12099120">12099120</option>
+            <option value="12099130">12099130</option>
+            <option value="12099140">12099140</option>
+            <option value="12099150">12099150</option>
+            <option value="12099160">12099160</option>
+            <option value="12099170">12099170</option>
+            <option value="12099190">12099190</option>
+            <option value="120999">120999</option>
+            <option value="12099910">12099910</option>
+            <option value="12099990">12099990</option>
+            <option value="1210">1210</option>
+            <option value="12101000">12101000</option>
+        </select>
+
+        <label for="first_time_export">Are you exporting for the first time? (Yes/No):</label>
+        <input type="text" id="first_time_export" name="first_time_export" required>
+
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
