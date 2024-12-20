@@ -18,7 +18,7 @@ MSMEs face significant challenges due to a lack of awareness, absence of a centr
 - **trade_docs_DB**: Contains exported certification data stored in SQL DB.
 
 ### 2. **User Interface (UI)**
-- **database_UI**: Basic demo UI displaying export certification details.
+- **db_UI**: Basic demo UI displaying export certification details.
 - **Webpage**: Centralized platform integrating database and UI components.
 
 ### 3. **Fraud Detection Module**
